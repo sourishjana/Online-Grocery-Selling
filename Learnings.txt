@@ -1,0 +1,27 @@
+> mkdir ecom
+> cd ecom
+ecom> dotnet -h
+ecom> dotnet new sln
+ecom> dotnet new webapi -o API
+ecom> dotnet sln -h
+ecom> dotnet sln add API
+
+ecom> dotnet new classlib -o Core
+ecom> dotnet new classlib -o Infrastructure
+ecom> dotnet sln add Core
+ecom> dotnet sln add Infrastructure
+
+
+Here Core will contain all our entities
+Infrastructure will contain all our migrations
+
+In API add refrence of Infrastructure
+In Infrastructure add reference of Core
+
+
+
+
+
+
+
+
