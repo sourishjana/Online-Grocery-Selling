@@ -95,51 +95,6 @@ CHANGES TILL NOW DONOT MAKE SENSE:
 	which is used to add data from the json file to the tables on app startup
 
 
-
-IN ORDER TO GET DATA INTO OUR SQL TABLES FROM JSON FILES:--------------------------------------
-
-USE [EcomDB]
-GO
-
-/*  
-
-F:\dotnet+angular\ecom\EXTRAS\SeedData\brands.json
-is just the path 
-copy path and paste it here 
-
-Below code is to add json data from a fiel.json to sql server table
-
-*/
-
-Declare @JSON varchar(max)
-SELECT @JSON=BulkColumn
-FROM OPENROWSET (BULK 'F:\dotnet+angular\ecom\EXTRAS\SeedData\brands.json', SINGLE_CLOB) import
-
-INSERT INTO [dbo].[ProductBrands]
-SELECT *
-FROM OPENJSON (@JSON)
-WITH 
-(
-	[Name] nvarchar(max)
-)
-GO
-
-
-delete from [dbo].[ProductBrands]
-
-select * from [dbo].[ProductBrands]
-
-/*
-
-Below code
-Used to reset the index to 1 so that indexing can again start from 1
-
-*/
-DBCC CHECKIDENT ('[ProductBrands]', RESEED, 0);
-GO
-
-
-
 2 branch created:
 1) boilerplare_code
 2) main-advanced
@@ -155,30 +110,14 @@ In order to push code in main-advanced branch now onwards:
 	nothing to commit, working tree clean
 
 
-> git branch
-  main
-* main-advanced
-
-> git checkout main
-Switched to branch 'main'
-Your branch is up to date with 'origin/main'.
-
-> git branch
-* main
-  main-advanced
-
-> git checkout main-advanced
-Switched to branch 'main-advanced'
-
-> git branch
-  main
-* main-advanced
 
 
 
-We can switch between branches and we can see diff codes totally 
-even locally
-we can see in which branch we are in by using 'git branch'
+
+
+
+
+
 
 
 
