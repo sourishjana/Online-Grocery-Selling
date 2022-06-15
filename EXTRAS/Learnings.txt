@@ -186,9 +186,26 @@ git clone -b <branchname> <remote-repo-url>
 git pull   ->   to pull changes from main tracked branch
 
 
+In order to use DTO:
+we need 
+AutoMapper.Extensions.Microsoft.DependencyInjection
 
 
+NOTE:
+Loading static files:
+Those files which needs to be loaded as it is when we are hitting an url needs to be kept under
+'wwwroot' folder inside main project (In our API)
 
+And we need to add a middleware in the Configure Method in Startup.cs
+NOTE: as sequencing of middlewares are important:----------------------------------------------
+
+We need to add one middleware 'app.UseStaticFiles()' under the 'app.UseRouting()'
+
+	app.UseRouting();
+
+        app.UseStaticFiles(); // load static images -
+
+And Job is done
 
 
 

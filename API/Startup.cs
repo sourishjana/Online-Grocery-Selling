@@ -1,3 +1,4 @@
+using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
@@ -23,13 +24,16 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            // to pass _repo in ProductsCOntroller
+            // to pass _repo in ProductsController
             services.AddScoped<IProductRepository,ProductRepository>(); 
             // used to add connection string in the DbContext class
             services.AddDbContext<StoreContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionString:EcomDB"]);
             });
+            // to map DTOs to Entities
+            services.AddAutoMapper(typeof(MappingProfiles));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
@@ -49,6 +53,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseStaticFiles(); // load static images -
 
             app.UseAuthorization();
 
