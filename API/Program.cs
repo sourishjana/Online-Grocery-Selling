@@ -40,7 +40,7 @@ namespace API
                 var context = services.GetRequiredService<StoreContext>();
                 await context.Database.MigrateAsync();
                 // Adds data from the JSON files to our database
-                await StoreContextSeed.SeedAsync(context, loggerFactory);
+                //await StoreContextSeed.SeedAsync(context, loggerFactory);
 
                 /*var userManager = services.GetRequiredService<UserManager<AppUser>>();
                 var identityContext = services.GetRequiredService<AppIdentityDbContext>();
