@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{8531CE4C-C0A7-4EC6-A5B1-8A80A4BA3981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{8531CE4C-C0A7-4EC6-A5B1-8A80A4BA3981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{E5427FCB-28BE-470A-9DFC-C5E51605D7C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{E5427FCB-28BE-470A-9DFC-C5E51605D7C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3B546E1E-E229-4FD6-95BF-E2BE48A1C611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3B546E1E-E229-4FD6-95BF-E2BE48A1C611}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{098FF640-604A-464E-A7E0-5A6C6786D62A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		API\Learnings.txt = API\Learnings.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8531CE4C-C0A7-4EC6-A5B1-8A80A4BA3981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +61,11 @@ Global
 		{3B546E1E-E229-4FD6-95BF-E2BE48A1C611}.Release|x64.Build.0 = Release|Any CPU
 		{3B546E1E-E229-4FD6-95BF-E2BE48A1C611}.Release|x86.ActiveCfg = Release|Any CPU
 		{3B546E1E-E229-4FD6-95BF-E2BE48A1C611}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA953F14-7AEE-4685-A728-BA2835924DEC}
 	EndGlobalSection
 EndGlobal

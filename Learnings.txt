@@ -19,6 +19,112 @@ In API add refrence of Infrastructure
 In Infrastructure add reference of Core
 
 
+Add a .gitignore file in the ecom dir
+
+and initialize git repo in the ecom
+
+Here we will be using repository pattern:----------------------------------------
+
+Client request
+Controllers (IRepository)	---> GetProducts(), GetProduct(int id)
+Repository 			---> _context.Products.ToList()
+DbContext			---> select * from products
+database 
+
+
+Add EntityFramework in the Infrastructure class lib by:
+Infrastructure -> Dependencies -> rightclick -> Manage Newget packages -> browse -> EntityFramework -> add
+
+All the verions of packages must be same to the 
+dotnet version
+e.g 5.0.4 should be followed when installing packages
+
+
+PM> dotnet
+PM> dotnet --version
+5.0.404
+
+PM> dotnet tool install --global dotnet-ef 		// we cant just download any version , vsersion must be >=dotnet package
+PM> dotnet tool install --global dotnet-ef --version 5.0.4
+PM> dotnet tool list -g
+PM> dotnet ef -h
+PM> dotnet ef migrations add InitialCreate -o Data/Migrations // will not work as we need to goto a perticular dir
+PM> dir
+PM> cd API
+PM> dotnet ef migrations add InitialCreate -o Data/Migrations // migrations created in a specific dir
+PM> dotnet ef database -h 
+PM> dotnet ef database update
+
+
+
+Use 
+using Microsoft.EntityFrameworkCore;
+instead of
+using System.Data.Entity;
+
+
+In order to create new Migration from begining:
+1) Goto sqlserver and delete all tables inside the DB
+2) and Remove all the migrations from the Migrations folder
+3) again add migrations
+
+In order to generate migrations in a particular class lib dir
+
+first goto the project level from a particlar class lib or project:
+If we are inside API:
+
+PM> cd ..
+PM> dir
+
+Now we are in base dir i.e Ecom
+
+PM> dotnet ef migrations add InitialCreate -p Infrastructure -s API -o Data/Migrations
+
+dotnet ef -> the package name
+migrations -> we will be working with migrations
+add InitialCreate -> adding a new migrations 
+-p Infrastructure -> the project where we are applying migrations
+-s API -> need to specify starting project 
+-o Data/Migrations -> In which folder we need to save the Migrations
+
+
+CHANGES TILL NOW DONOT MAKE SENSE:
+1) In the Program.cs file we have changes the main method which helps in 
+	Applying the migrations and creating the Database at app startup
+2) In the Infrastructure we added 'SeedData' folder and 'StoreContextSeed.cs' file
+	which is used to add data from the json file to the tables on app startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
