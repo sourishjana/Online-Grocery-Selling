@@ -140,7 +140,19 @@ GO
 
 
 
+2 branch created:
+1) boilerplare_code
+2) main-advanced
 
+In order to push code in main-advanced branch now onwards:
+
+> git checkout -b main-advanced
+> git add .
+> git commit -m "Repository Pattern Added advanced"
+> git push origin main-advanced
+> git status
+	On branch main-advanced
+	nothing to commit, working tree clean
 
 
 
