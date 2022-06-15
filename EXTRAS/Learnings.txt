@@ -180,6 +180,10 @@ We can switch between branches and we can see diff codes totally
 even locally
 we can see in which branch we are in by using 'git branch'
 
+We can clone code from a branch:
+git clone -b <branchname> <remote-repo-url>
+
+git pull   ->   to pull changes from main tracked branch
 
 
 
