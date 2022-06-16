@@ -210,6 +210,162 @@ And Job is done
 
 
 
+CLIENT:-------------------------------------------------------------------------------------------------------------
+
+We will be using angular boostrap: link: https://valor-software.com/ngx-bootstrap/#/
+
+In order to test versions: https://unpkg.com/browse/@angular/core@12.2.13/package.json
+
+In order to use nvm: we need to open cmd as administrator and use nvm commands:
+> nvm ls
+> nvm use [version-name]
+
+add bootstrap and styles to our project:
+
+> ng add ngx-bootstrap
+> npm install font-awesome
+
+Inside angular.json:
+Under "architect" we need to add
+
+	    "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "src/styles.scss"
+            ],
+
+
+In order to not include test files:
+> ng g c nav-bar --skip-tests
+
+
+To get https secure connection:
+
+"options": {
+            "sslKey": "ssl/server.key",
+            "sslCert": "ssl/server.crt",
+            "ssl": true
+          },
+
+
+
+
+Observables:
+
+A sequence of items that arrives asynchronously over time.
+
+Promises :
+
+				 Succeed
+				/
+--------->	then	------->
+				\
+				 fail
+
+Observables:
+
+	    Cancel
+	  /
+--------->
+	  \
+	    fail/succeed ----> subscribe()  ----> map() ------> filter() ----> data
+
+
+
+
+			GET api/products
+Angular http client ------------------------> API
+		    <------------------------
+			http response: products[]
+observables of products[]
+	|
+	|
+map to a certain type of data
+{product[], pageNumber, Count}
+	|
+	| subscribe
+	|
+shop component
+	
+
+
+HTTP, Observables, RxJS
+
+1) HTTP Get request from ShopService
+2) Receive the Observable and cast it into a Products array
+3) Subscribe to observable from the component
+4) Assign the products array to a local variable
+
+RxJS:
+
+1) Reactive extension of Javascript
+2) Utility library to work with observables
+3) Uses the pipe() method to chain RxJS operators together
+
+
+
+Creating component withot generating a new folder:
+> ng g c shop --skip-tests --flat 
+
+Creating a service without generating a new folder:
+> ng g s shop --skip-tests --flat
+
+
+* -> 'asterik' means it will change something in the dom
+e.g -> *ngFor
+
+
+RsJS is used to manipulate Observables:
+
+    return this.http.get<Pagination>(this.baseUrl+'products',{observe:'response',params})
+      .pipe(
+        map(resp=>{
+          return resp.body
+        })
+      )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

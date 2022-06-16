@@ -55,5 +55,15 @@ namespace Infrastructure.Data
             var productsAppliedPagination = productsOrdered.Skip(skip).Take(take);
             return await productsAppliedPagination.ToListAsync();
         }
+
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+        {
+            return await _context.ProductBrands.ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
+        {
+            return await _context.ProductTypes.ToListAsync();
+        }
     }
 }
