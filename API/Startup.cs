@@ -42,6 +42,15 @@ namespace API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
+
+            // adding the src from where we will only be accepting http requests
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +72,8 @@ namespace API
             app.UseRouting();
 
             app.UseStaticFiles(); // load static images -
+
+            app.UseCors("CorsPolicy"); // adding cors 
 
             app.UseAuthorization();
 
