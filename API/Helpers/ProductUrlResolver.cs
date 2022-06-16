@@ -27,12 +27,10 @@ namespace API.Helpers
  
 the prop pictureUrl is like
     "pictureUrl": "images/products/sb-core1.png"
-
 But if our picture is loaded from a server and we need to give the starting url of the server
 like:
  "pictureUrl": "https://localhost:5001/images/products/sb-core1.png"
  
-
 Here we are adding the extra part when we are returning a DTO
  
  */

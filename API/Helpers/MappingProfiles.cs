@@ -4,7 +4,7 @@ using Core.Entities;
 
 namespace API.Helpers
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {

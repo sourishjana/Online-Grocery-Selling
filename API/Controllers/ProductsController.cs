@@ -1,25 +1,15 @@
-using System;
 using System.Collections.Generic;
-//using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
-//using API.Data;
-//using API.Entities;
 using Core.Entities;
 using Core.Interfaces;
-//using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using Infrastructure.Data;
 using AutoMapper;
 using API.Dtos;
+using API.Errors;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseApiController
     {
         private IProductRepository _repo { get; set; }
         private IMapper _mapper { get; set; }
@@ -40,7 +30,8 @@ namespace API.Controllers
         public async Task<ActionResult<ProductToReturnDto>> GetProductById(int id)
         {
             var product = await _repo.GetProductByIdAsync(id);
-            return _mapper.Map<Product,ProductToReturnDto>(product);
+            if (product == null) return NotFound(new ApiResponse(404));
+            return _mapper.Map<Product, ProductToReturnDto>(product);
         }
     }
 }
