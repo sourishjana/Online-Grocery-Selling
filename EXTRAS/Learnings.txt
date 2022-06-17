@@ -342,6 +342,14 @@ the property is updated.
 
 
 
+Implement lazy loading in Angular:
+Set routes inside diff modules for module specific routes instead of loading them in the app.module.ts
+If we specify all the routs in app module than all the other modules are loaded at the same time
+ when app module is loaded
+
+We will load the module specific routes when user wants that module specific route
+
+
 
 
 
