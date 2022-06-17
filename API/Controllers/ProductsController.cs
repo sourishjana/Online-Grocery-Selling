@@ -24,10 +24,11 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<Pagination<ProductToReturnDto>>>> GetProducts([FromQuery]ProductSpecParams productParams)
         {
             var products = await _repo.GetProductsAsync(productParams);
+            var totalItems = await _repo.GetProductsCountAsync(productParams);
             var data = _mapper
                 .Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
             return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex,
-                productParams.PageSize, data.Count, data));
+                productParams.PageSize, totalItems, data));
         }
 
         [HttpGet("{id}")]

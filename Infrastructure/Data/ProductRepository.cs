@@ -65,5 +65,16 @@ namespace Infrastructure.Data
         {
             return await _context.ProductTypes.ToListAsync();
         }
+
+        public async Task<int> GetProductsCountAsync(ProductSpecParams productParams)
+        {
+            var products = _context.Products
+                .Include(p => p.ProductBrand) // eager loading
+                .Include(p => p.ProductType)
+                .Where(p => productParams.BrandId == null ? true : productParams.BrandId == p.ProductBrandId)
+                .Where(p => productParams.TypeId == null ? true : productParams.TypeId == p.ProductTypeId)
+                .Where(p => string.IsNullOrEmpty(productParams.Search) ? true : p.Name.ToLower().Contains(productParams.Search));
+            return await products.CountAsync();
+        }
     }
 }
