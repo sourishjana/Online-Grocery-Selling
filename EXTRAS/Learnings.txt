@@ -351,6 +351,14 @@ We will load the module specific routes when user wants that module specific rou
 
 
 
+Client - Error Handling:---------------------------------
+
+To handle errors we receive from the API centrally and handled by http interceptors:
+
+HttpInterceptor takes the type of error and redirects to a particular error route page
+
+
+
 
 
 
