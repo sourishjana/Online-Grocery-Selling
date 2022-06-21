@@ -6,7 +6,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 
 const routes:Routes=[
   {path:'',component:ShopComponent},
-  {path:':id',component:ProductDetailsComponent},
+  {path:':id',component:ProductDetailsComponent, data:{breadcrumb:{alias:'productDetails'}}},
+  // we take the alias of id as 'productDetails' here to replace id by product name then we set the 'productDetails' to product name in the products-details.component.ts
 ]
 
 @NgModule({

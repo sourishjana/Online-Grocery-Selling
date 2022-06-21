@@ -358,9 +358,36 @@ To handle errors we receive from the API centrally and handled by http intercept
 HttpInterceptor takes the type of error and redirects to a particular error route page
 
 
+Client - Pazzazz:------------------------------------------
+
+Improving UI of the application
+
+NOTE:
+npm ERR! ERESOLVE unable to resolve dependency tree -> this kind of err while installing npm packages
+
+use 
+> npm i xng-breadcrumb --legacy-peer-deps
+
+USe this version:
+npm i xng-breadcrumb@6.6.0 --legacy-peer-deps
 
 
+Now breadcrumb is added as a global service and we can set its values by just adding its service as dependency injection
 
+
+In order to use bootswatch in project:------
+
+> npm i bootswatch
+
+In the file angular.json we need to add "./node_modules/bootswatch/dist/united/bootstrap.min.css", inside "styles:[]" 
+and restart the application
+
+
+We can add a spinner utill all the things loads:----
+
+> npm i ngx-spinner --legacy-peer-deps
+
+Search ngx spinner and see how it is used
 
 
 
