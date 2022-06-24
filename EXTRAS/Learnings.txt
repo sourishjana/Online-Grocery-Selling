@@ -312,6 +312,17 @@ In order to use nvm: we need to open cmd as administrator and use nvm commands:
 > nvm ls
 > nvm use [version-name]
 
+
+In order to add bootswatch:-------------------------------------------------------------------------------------------------------------------------
+
+> npm i bootswatch
+
+Then in styles.css: -> add this below line:
+
+import "bootswatch/dist/[theme]/bootstrap.min.css";
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 add bootstrap and styles to our project:
 
 > ng add ngx-bootstrap
