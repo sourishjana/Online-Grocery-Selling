@@ -484,7 +484,20 @@ Search ngx spinner and see how it is used
 
 
 
+API - Basket:----------------------------------------------------------------
 
+For basket we donto need to store data in DB
+We will use Reddis for this which is an inmemory data store
+is uses a key value pair ds
+
+Redis:
+1) In-memory data structure store
+2) Supports strings, hashes, lists, sets, etc
+3) key value store
+4) Fast
+5) Persists data by using snapshots every minute
+6) Data can be given time to live
+7) Great for caching data
 
 
 
