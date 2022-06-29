@@ -32,7 +32,7 @@ namespace API.Controllers
             this._mapper = mapper;
         }
 
-        [HttpGet("login")]
+        [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login([FromBody]LoginDto loginDto)
         {
             var user=await _userManager.FindByEmailAsync(loginDto.Email);

@@ -1023,6 +1023,17 @@ https://regexlib.com/Search.aspx?k=password
 
 
 
+Client: Identity:--------------------------------------------------------------------------------------------------------------------
+
+Adding an account feature
+Forms in angular
+Reactive forms
+Reusable form components
+Client side validation
+Async validation
+
+
+
 
 
 

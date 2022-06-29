@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center mt-5">
+  <div class="col-4">
+    <form [formGroup]="loginForm" (ngSubmit)="loginForm?.valid && onSubmit()">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="email"
+          [ngClass]="(email.touched) 
+            ? !email.valid ? 'is-invalid' : 'is-valid' : null"
+        />
+        <label for="floatingInput">Email address</label>
+        <span class="text-danger" *ngIf="email.invalid && email.touched">
+            <div *ngIf="email.errors['required']">Email address is required!</div>
+            <div *ngIf="email.errors['pattern']">Email address is not valid!</div>
+        </span>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          formControlName="password"
+          [ngClass]="(password.touched) 
+            ? !password.valid ? 'is-invalid' : 'is-valid' : null"
+        />
+        <label for="floatingPassword">Password</label>
+        <span class="text-danger" *ngIf="password.invalid && password.touched">
+            <div *ngIf="password.errors['required']">Password is required!</div>
+        </span>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="loginForm.invalid" type="submit">
+        Sign in
+      </button>
+    </form>
+  </div>
+
+  <div class="col-4">
+    <p>Form status: {{loginForm.status}}</p>
+    <p>Email status: {{email.status}}</p>
+    <p>Email touched: {{email.touched}}</p>
+    <p>Email dirty: {{email.dirty}}</p>
+    <p>{{loginForm?.value | json}}</p>
+  </div>
+</div>
