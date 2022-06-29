@@ -503,23 +503,523 @@ Redis:
 
 
 
+Identity:----------------------------------------------------------------------------------------------------------------
+
+Packages we need to install:
+
+Add in Core project: 
+Microsoft.AspNetCore.Identity.EntityFrameworkCore -> it contains all the classes required for making tables
+
+Add in Infrastructure:
+Microsoft.AspNetCore.Identity -> It contains the usermanager and signin manager
+Microsoft.IdentityModel.Tokens -> Provides support for security tokens
+System.IdentityModel.Tokens.Jwt -> for creating and validating JSON web tokens
+
+
+Inside Core/Entities folder:
+Create a seperate folder called Identity where we will be storing all identity classes
+
+AppUser.cs:
+using Microsoft.AspNetCore.Identity;
+
+namespace Core.Entities.Identity
+{
+    public class AppUser:IdentityUser
+    {
+        public string DisplayName { get; set; }
+        public Address Address { get; set; }
+    }
+}
+
+Address.cs:
+using System.ComponentModel.DataAnnotations;
+
+namespace Core.Entities.Identity
+{
+    public class Address
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PinCode { get; set; }
+
+        [Required]
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
+    }
+}
+
+We have only one address for one AppUser
+
+
+Inside Infrastructure create identity folder:
+Inside Infrastructure/Identity:
+
+AppIdentutyDbContext.cs:
+using Core.Entities.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace Infrastructure.Identity
+{
+    public class AppIdentityDbContext : IdentityDbContext<AppUser>
+    {
+        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+    }
+}
+
+Inside API/StartUp.cs:
+Inside ConfigureServices method:
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionString:IdentityConnection"]);
+            });
+
+            var builder = services.AddIdentityCore<AppUser>();
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
+            services.AddAuthentication();
+
+Inside appsettings.Development.json:
+  "ConnectionString": {
+    "EcomDB": "server=DESKTOP-DJ3D3T0\\SQLSERVER;database=EcomDB;Trusted_Connection=True;MultipleActiveResultSets=True",
+    "Redis": "localhost",
+    "IdentityConnection": "server=DESKTOP-DJ3D3T0\\SQLSERVER;database=IdentityDB;Trusted_Connection=True;MultipleActiveResultSets=True"
+  },
+
+
+
+
+In order to add migrations in a specific dir for a specific DbContext
+-c AppIdentityDbContext -> is the cbcontext
+
+PM> dotnet ef migrations add IdentityInitial -p Infrastructure -s API -c AppIdentityDbContext -o Identity/Migrations
+
+
+Inside Infrastructure/Identity/Migrations we will have all the migrations
+
+Inside API/Program.cs:
+
+        public static async Task Main(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                // Applies the migrations and creating the Database at app startup
+                var context = services.GetRequiredService<StoreContext>();
+                await context.Database.MigrateAsync();
+                // Adds data from the JSON files to our database
+                //await StoreContextSeed.SeedAsync(context, loggerFactory);
+
+                // Applies the migrations and creating the Database at app startup for identity -------------add this-------------------------
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                await identityContext.Database.MigrateAsync();
+                //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
+            }
+            catch (Exception ex)
+            {
+                var logger = loggerFactory.CreateLogger<Program>();
+                logger.LogError(ex, "An error occurred during migration");
+            }
+
+            host.Run();
+        }
+
+
+The above code will do:
+When we run our project it will automatically update the database 
+
+
+
+Adding a token generation service:---------------------------------------------------------------------------
+
+FIrst we need to add Interface for this:
+Core/Interfaces
+ITokenService.cs:
+
+using Core.Entities.Identity;
+
+namespace Core.Interfaces
+{
+    public interface ITokenService
+    {
+        string CreateToken(AppUser user);
+    }
+}
+
+Next we need to create a actual Servuce from the interface:
+Infrastructure/Services
+TokenService.cs:
+using Core.Entities.Identity;
+using Core.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace Infrastructure.Services
+{
+    public class TokenService: ITokenService
+    {
+        private readonly IConfiguration _config;
+        private readonly SymmetricSecurityKey _key;
+        public TokenService(IConfiguration config)
+        {
+            this._config = config;
+            this._key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]));
+        }
+
+        public string CreateToken(AppUser user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(ClaimTypes.GivenName,user.DisplayName)
+            };
+            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(3),
+                SigningCredentials = creds,
+                Issuer = _config["Token:Issuer"]
+            };
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token=tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+    }
+}
+
+
+
+Setting Up Identity to use token:-------------------------------------------------------------------------------
+
+Inside API/StartUp.cs:
+Inside ConfigureServices method:
+
+            // add identity context - for authentication
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionString:IdentityConnection"]);
+            });
+
+            var builder = services.AddIdentityCore<AppUser>();
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Token:Key"])),
+                        ValidIssuer = Configuration["Token:Issuer"],
+                        ValidateIssuer=true,
+                        ValidateAudience=false
+                    };
+                });
+
+            services.AddScoped<ITokenService, TokenService>();
+
+Inside configure Method for adding middlewares:
+
+            app.UseCors("CorsPolicy"); // adding cors 
+
+            app.UseAuthentication(); // adding authentication ---- here u need to add this line-----------
+
+            app.UseAuthorization();
+
+
+Inside appsettings.Development.json:
+  "ConnectionString": {
+    "EcomDB": "server=DESKTOP-DJ3D3T0\\SQLSERVER;database=EcomDB;Trusted_Connection=True;MultipleActiveResultSets=True",
+    "Redis": "localhost",
+    "IdentityConnection": "server=DESKTOP-DJ3D3T0\\SQLSERVER;database=IdentityDB;Trusted_Connection=True;MultipleActiveResultSets=True"
+  },
+  "Token": {
+    "Key": "super_secret_key",
+    "Issuer": "https://localhost:44332"
+  },
+
+
+
+For debugging purpose:-----------------------------------------------------------------------------------------------------
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+
+ to
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Information",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+For this Project we need 4 DTOs:------------------------------------------------------------------------------------------
+
+Inside API/DTOs/
+
+using System.ComponentModel.DataAnnotations;
+
+namespace API.Dtos
+{
+    public class AddressDto
+    {
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string Street { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string State { get; set; }
+        [Required]
+        public string PinCode { get; set; }
+    }
+}
+
+
+using System.ComponentModel.DataAnnotations;
+
+namespace API.Dtos
+{
+    public class LoginDto
+    {
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
+    }
+}
+
+
+using System.ComponentModel.DataAnnotations;
+
+namespace API.Dtos
+{
+    public class RegisterDto
+    {
+        [Required]
+        public string DisplayName { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [RegularExpression("(?=^.{6,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\\s).*$",
+            ErrorMessage = "Password must have atleast 1 small-case letter, 1 Capital letter, 1 digit, 1 special character and the length should be min 6 characters.")]
+        public string Password { get; set; }
+
+    }
+}
+
+
+namespace API.Dtos
+{
+    public class UserDto
+    {
+        public string Email { get; set; }
+        public string DisplayName { get; set; }
+        public string Token { get; set; }
+    }
+}
+
+Inside API/Helpers
+
+MappingProfiles.cs:
+using API.Dtos;
+using AutoMapper;
+using Core.Entities;
+using Core.Entities.Identity;
+
+namespace API.Helpers
+{
+    public class MappingProfiles : Profile
+    {
+        public MappingProfiles()
+        {
+            CreateMap<Product, ProductToReturnDto>()
+                .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
+                .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))
+                .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductUrlResolver>());
+
+            CreateMap<Address, AddressDto>().ReverseMap(); // --------for both way mapping of model to dto and dto to model------------
+        }
+    }
+}
+
+
+
+Now add controllers:------------------------------------------------------------------------------------------------------------
+
+using API.Dtos;
+using API.Errors;
+using AutoMapper;
+using Core.Entities.Identity;
+using Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
+namespace API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AccountController : BaseApiController
+    {
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
+
+        public AccountController(UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            ITokenService tokenService,
+            IMapper mapper)
+        {
+            this._userManager = userManager;
+            this._signInManager = signInManager;
+            this._tokenService = tokenService;
+            this._mapper = mapper;
+        }
+
+        [HttpGet("login")]
+        public async Task<ActionResult<UserDto>> Login([FromBody]LoginDto loginDto)
+        {
+            var user=await _userManager.FindByEmailAsync(loginDto.Email);
+            if(user==null) return Unauthorized(new ApiResponse(401));
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = _tokenService.CreateToken(user),
+                DisplayName = user.DisplayName,
+            };
+        }
+
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register([FromBody]RegisterDto registerDto)
+        {
+            if (CheckEmailExistsAsync(registerDto.Email).Result.Value) // calling an action which is in this file
+            {
+                return new BadRequestObjectResult(new ApiValidationErrorResponse
+                {
+                    Errors = new[]
+                    {
+                        "Email Address is in use"
+                    }
+                });
+            }
+            var user = new AppUser
+            {
+                DisplayName = registerDto.DisplayName,
+                Email = registerDto.Email,
+                UserName = registerDto.Email
+            };
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
+            if (!result.Succeeded) return BadRequest(new ApiResponse(400));
+            return new UserDto
+            {
+                DisplayName = user.DisplayName,
+                Token = _tokenService.CreateToken(user),
+                Email = user.Email
+            };
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return NotFound();
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = _tokenService.CreateToken(user),
+                DisplayName = user.DisplayName
+            };
+
+        }
+
+        [HttpGet("emailexists")]
+        public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery]string email)
+        {
+            return await _userManager.FindByEmailAsync(email) != null;
+        }
+
+        [Authorize]
+        [HttpGet("address")]
+        public async Task<ActionResult<AddressDto>> GetUserAddress()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.Users.Include(x => x.Address).SingleOrDefaultAsync(x => x.Email == email);
+            return _mapper.Map<Address, AddressDto>(user.Address);
+        }
+
+        [Authorize]
+        [HttpPut("address")]
+        public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.Users.Include(x => x.Address).SingleOrDefaultAsync(x => x.Email == email);
+
+            user.Address = _mapper.Map<Address>(address);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded) return Ok(_mapper.Map<AddressDto>(user.Address));
+            return BadRequest("Problem updating the user");
+        }
+    }
+}
 
 
 
 
 
+API validation:----------------------------------------------------------------------------------------------------------------------
 
+We can have data validations in DTO instead of specifying them in the models
 
-
-
-
-
-
-
-
-
-
-
+To get reg ex for passwords:
+https://regexlib.com/Search.aspx?k=password
 
 
 

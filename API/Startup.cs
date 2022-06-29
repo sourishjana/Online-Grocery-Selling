@@ -1,18 +1,24 @@
 using API.Helpers;
 using API.Middleware;
+using Core.Entities.Identity;
 using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Identity;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
 using StackExchange.Redis;
+using System.Text;
 
 namespace API
 {
@@ -36,6 +42,34 @@ namespace API
             {
                 options.UseSqlServer(Configuration["ConnectionString:EcomDB"]);
             });
+
+            // add identity context - for authentication
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionString:IdentityConnection"]);
+            });
+
+            var builder = services.AddIdentityCore<AppUser>();
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Token:Key"])),
+                        ValidIssuer = Configuration["Token:Issuer"],
+                        ValidateIssuer=true,
+                        ValidateAudience=false
+                    };
+                });
+
+            services.AddScoped<ITokenService, TokenService>();
+            
+
+
             // to map DTOs to Entities
             services.AddAutoMapper(typeof(MappingProfiles));
 
@@ -84,6 +118,8 @@ namespace API
             app.UseStaticFiles(); // load static images -
 
             app.UseCors("CorsPolicy"); // adding cors 
+
+            app.UseAuthentication(); // adding authentication
 
             app.UseAuthorization();
 
