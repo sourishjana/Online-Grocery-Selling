@@ -1034,8 +1034,149 @@ Async validation
 
 
 
+Applying guards:--------------------------------------------------------------------------------------------------------------------
+
+blocking the pages which are unauthorized
+
+Ceate a folder guards inside the core folder 
+
+$ cd src/app/core/guards
+$ ng g
+Available Schematics:
+  Collection "@schematics/angular" (default):
+    app-shell
+    application
+    class
+    component
+    directive
+    enum
+    guard
+    interceptor
+    interface
+    library
+    module
+    pipe
+    resolver
+    service
+    service-worker
+    web-worker
+$ ng g g auth --skip-tests
+? Which interfaces would you like to implement? CanActivate
+CREATE src/app/core/guards/auth.guard.ts (457 bytes)
 
 
+auth.guard.ts:
+
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AccountService } from 'src/app/account/account.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(private accountService:AccountService,private router:Router){}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.accountService.currentUser$.pipe(
+      map(auth=>{
+        if(auth){
+          return true
+        }
+        // if authentication is successful
+        // we navigate to 'account/login'
+        // and send the prev url from where we get the guard in queryParams
+        // we get the prev url from the state
+        this.router.navigate(['account/login'], {queryParams: {returnUrl: state.url}})
+      })
+    )
+  }  
+}
+
+
+
+app-routing-module.ts:
+import { HomeComponent } from './home/home.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TestErrorComponent } from './core/test-error/test-error.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { ServerErrorComponent } from './core/server-error/server-error.component';
+import { AuthGuard } from './core/guards/auth.guard';
+
+const routes: Routes = [
+  {path:'',component:HomeComponent, data:{breadcrumb:'Home'}},
+  {path:'test-error',component:TestErrorComponent, data:{breadcrumb:'Test Error'}},
+  {path:'not-found',component:NotFoundComponent, data:{breadcrumb:'Not Found'}},
+  {path:'server-error',component:ServerErrorComponent, data:{breadcrumb:'Server Error'}},
+  {path:'shop',loadChildren:()=>import('./shop/shop.module').then(mod=>mod.ShopModule), data:{breadcrumb:'Shop'}}, // lazy loading from shop module -> shopModule loaded here automatically
+  {path:'basket',loadChildren:()=>import('./basket/basket.module').then(mod=>mod.BasketModule), data:{breadcrumb:'Basket'}},
+  {path:'checkout',
+  canActivate:[AuthGuard], // ----------------------------------------------here we add guards--------------------------------------
+  loadChildren:()=>import('./checkout/checkout.module').then(mod=>mod.CheckoutModule), data:{breadcrumb:'Checkout'}},
+  {path:'account',loadChildren:()=>import('./account/account.module').then(mod=>mod.AccountModule), data:{breadcrumb:{skip:true}}},
+  {path:'**',redirectTo:'not-found',pathMatch:'full'} // if user types a wrong url -> redirect to home 
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+
+
+login.component.ts:
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AccountService } from '../account.service';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+  loginForm:FormGroup
+  returnUrl:string //------------------------------------------------ we need to add a variable -------------------------------------
+
+  constructor(private fb:FormBuilder,private service:AccountService,private router:Router,private activatedRoute:ActivatedRoute) { }
+
+  ngOnInit(): void {
+    // after login where we need to redirect to some url
+    // if there is any return url we need to return that else we return to shop
+    this.returnUrl=this.activatedRoute.snapshot.queryParams.returnUrl || '/shop' // ------------------here---------------------------
+
+    this.createLoginForm()
+  }
+
+  get email(){return this.loginForm.get('email')}
+  get password(){return this.loginForm.get('password')}
+
+  createLoginForm(){
+    this.loginForm=this.fb.group({
+      email:['',[Validators.required,Validators.pattern("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")]],
+      password:['',Validators.required]
+    })
+  }
+  
+  onSubmit(){
+    console.log(this.loginForm.value)
+    this.service.login(this.loginForm.value).subscribe(resp=>{
+      console.log(localStorage.getItem('token'))
+      //this.router.navigateByUrl('/shop')
+      this.router.navigateByUrl(this.returnUrl) // -------------------------after logging in we redirect to a return url--------------
+    },err=>{
+      console.log(err)
+    })
+  }
+
+}
 
 
 
