@@ -1,1 +1,71 @@
-<p>checkout works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+              
+              <mat-stepper linear #stepper>
+                <mat-step [stepControl]="checkOutForm">
+                  <form class="row" [formGroup]="checkOutForm">
+                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <mat-form-field class="col-6" appearance="fill">
+                      <mat-label>First Name</mat-label>
+                      <input matInput formControlName="firstName" placeholder="First name" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName" placeholder="Last name" required>
+                      </mat-form-field>
+                      <mat-form-field class="col-6" appearance="fill">
+                        <mat-label>Street</mat-label>
+                        <input matInput formControlName="street" placeholder="Street" required>
+                      </mat-form-field>
+                      <mat-form-field class="col-6" appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city" placeholder="City" required>
+                      </mat-form-field>
+                      <mat-form-field class="col-6" appearance="fill">
+                        <mat-label>State</mat-label>
+                        <input matInput formControlName="state" placeholder="State" required>
+                      </mat-form-field>
+                      <mat-form-field class="col-6" appearance="fill">
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput formControlName="zipcode" placeholder="Zip Code" required>
+                      </mat-form-field>
+                    <div>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="deliveryForm">
+                  <form [formGroup]="deliveryForm">
+                    <ng-template matStepLabel>Add Delivery Option</ng-template>
+                    <mat-form-field appearance="fill">
+                      <mat-label>option</mat-label>
+                      <input matInput formControlName="deliveryMethod" placeholder="Delivery method"
+                             required>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Done</ng-template>
+                  <p>You are now done.</p>
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                  </div>
+                </mat-step>
+              </mat-stepper>
+              
+        </div>
+        <div class="col-4">
+            <app-order-totals                            
+            *ngIf="basketTotal"
+            [shippingPrice]="basketTotal.shipping"
+            [subtotal]="basketTotal.subtotal"
+            [total]="basketTotal.total"></app-order-totals>
+        </div>
+    </div>
+</div>

@@ -11,14 +11,18 @@ import { BasketService } from './basket.service';
 export class BasketComponent implements OnInit {
   basket:IBasket
   basketTotal:IBasketTotals
-  basket$: Observable<IBasket>;
-  basketTotals$: Observable<IBasketTotals>;
+  // basket$: Observable<IBasket>;
+  // basketTotals$: Observable<IBasketTotals>;
 
   constructor(private service:BasketService) { }
 
   ngOnInit(): void {
-    this.basket$=this.service.basket$ ?? null
-    this.basketTotals$=this.service.basketTotal$ ?? null
+    this.service.basket$.subscribe(resp=>{
+      this.basket=resp
+    })
+    this.service.basketTotal$.subscribe(resp=>{
+      this.basketTotal=resp
+    })
   }
 
   removeBasketItem(item:IBasketItem){
