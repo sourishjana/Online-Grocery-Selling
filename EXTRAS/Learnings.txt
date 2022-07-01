@@ -88,6 +88,56 @@ add InitialCreate -> adding a new migrations
 -o Data/Migrations -> In which folder we need to save the Migrations
 
 
+
+Any Intermediate Migration in between after changing some table column or adding a table:
+
+PM> dotnet ef migrations add OrderEntityAdded-2 -p Infrastructure -s API -c StoreContext
+
+After that instead of database-update we need to do this folling code as it automatically runs database update 
+when we are running the project:
+Add this piece of code once in the startUp.cs file and after running once donot run again
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        {
+            // Use only when there is any db updates:--------------------------------------------------------------------------------
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<StoreContext>();
+                context.Database.Migrate();
+            }
+	    //-----------------------------------------------------------------------------------------------------------------------
+            //app.UseMiddleware<ExceptionMiddleware>(); // to format the error responses
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
+            }
+
+            app.UseStatusCodePagesWithReExecute("/errors/{0}"); // to handle page not found - it will hit the ErrorController
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseStaticFiles(); // load static images -
+
+            app.UseCors("CorsPolicy"); // adding cors 
+
+            app.UseAuthentication(); // adding authentication
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+
+
+
+
 CHANGES TILL NOW DONOT MAKE SENSE:
 1) In the Program.cs file we have changes the main method which helps in 
 	Applying the migrations and creating the Database at app startup

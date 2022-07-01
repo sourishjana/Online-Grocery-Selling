@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
@@ -67,7 +68,9 @@ namespace API
                 });
 
             services.AddScoped<ITokenService, TokenService>();
-            
+
+            // add order service:
+            services.AddScoped<IOrderService, OrderService>();
 
 
             // to map DTOs to Entities
@@ -86,6 +89,8 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
 
+            
+
             // adding the src from where we will only be accepting http requests
             services.AddCors(opt =>
             {
@@ -98,8 +103,14 @@ namespace API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            // Use only when there is any db updates:-------------------------------------------------------
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<StoreContext>();
+                context.Database.Migrate();
+            }
             //app.UseMiddleware<ExceptionMiddleware>(); // to format the error responses
 
             if (env.IsDevelopment())

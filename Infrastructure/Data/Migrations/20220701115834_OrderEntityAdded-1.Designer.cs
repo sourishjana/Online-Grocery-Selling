@@ -4,14 +4,16 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220701115834_OrderEntityAdded-1")]
+    partial class OrderEntityAdded1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,13 +201,13 @@ namespace Infrastructure.Data.Migrations
                             b1.Property<string>("LastName")
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.Property<string>("PinCode")
-                                .HasColumnType("nvarchar(max)");
-
                             b1.Property<string>("State")
                                 .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Street")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("ZipCode")
                                 .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("OrderId");

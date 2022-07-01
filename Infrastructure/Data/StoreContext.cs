@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using Core.Entities;
+using Core.Entities.Orders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -19,6 +20,9 @@ namespace Infrastructure.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
 
         // Bwloe code is to specify that we have a configuration file to look after
