@@ -44,7 +44,11 @@ namespace Infrastructure.Services
 
         public async Task<Order> GetOrderByIdAsync(int id, string email)
         {
-            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id && o.BuyerEmail == email);
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                .Include(o => o.DeliveryMethod)
+                .Include(o => o.ShipToAddress)
+                .FirstOrDefaultAsync(o => o.Id == id && o.BuyerEmail == email);
             return order;
         }
 

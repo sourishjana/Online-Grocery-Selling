@@ -46,16 +46,16 @@ namespace API.Controllers
         {
             string email = User.FindFirstValue(ClaimTypes.Email);
             var orders=await _orderService.GetOrdersForUserAsync(email);
-            return Ok(orders);
+            return Ok(_mapper.Map<IReadOnlyList<Order>, IReadOnlyList<OrderToReturnDto>>(orders));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> GetOrderById(int id)
+        public async Task<ActionResult<OrderToReturnDto>> GetOrderById(int id)
         {
             string email = User.FindFirstValue(ClaimTypes.Email);
             var order = await _orderService.GetOrderByIdAsync(id, email);
             if (order == null) return BadRequest(new ApiResponse(400));
-            return Ok(order);
+            return Ok(_mapper.Map<Order,OrderToReturnDto>(order));
         }
 
         [HttpGet("deliveryMethods")]
