@@ -3,6 +3,8 @@
 ecom> dotnet -h
 ecom> dotnet new sln
 ecom> dotnet new webapi -o API
+// -------------------------or-------------------------- for dotnet specific framework
+ecom> dotnet new webapi -o API -f net5.0  
 ecom> dotnet sln -h
 ecom> dotnet sln add API
 
