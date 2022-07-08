@@ -82,7 +82,6 @@ namespace API
                 var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
-            services.AddScoped<IBasketRepository, BasketRepository>();
 
             services.AddSwaggerGen(c =>
             {

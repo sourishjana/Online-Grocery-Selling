@@ -9,12 +9,16 @@ import { BreadcrumbService } from 'xng-breadcrumb';
 })
 export class SectionHeaderComponent implements OnInit {
   // any observable variable ends with $
-  breadcrumb$:Observable<any[]>
+  //breadcrumb$:Observable<any[]>
+  breadcrumbs:any[]
 
   constructor(private bcService:BreadcrumbService) { }
 
   ngOnInit(): void {
-    this.breadcrumb$=this.bcService.breadcrumbs$ // we get the total breadcrumb object where we have everything contained in it
+    this.bcService.breadcrumbs$.subscribe(resp=>{
+      this.breadcrumbs=resp
+    })
+    //this.breadcrumb$=this.bcService.breadcrumbs$ // we get the total breadcrumb object where we have everything contained in it
   }
 
 }
