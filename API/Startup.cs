@@ -76,12 +76,6 @@ namespace API
             // to map DTOs to Entities
             services.AddAutoMapper(typeof(MappingProfiles));
 
-            // configuring redis
-            services.AddSingleton<IConnectionMultiplexer>(c =>
-            {
-                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
-                return ConnectionMultiplexer.Connect(configuration);
-            });
 
             services.AddSwaggerGen(c =>
             {
