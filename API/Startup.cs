@@ -41,7 +41,7 @@ namespace API
             // used to add connection string in the DbContext class
             services.AddDbContext<StoreContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionString:EcomDB"]);
+                options.UseSqlServer(Configuration["ConnectionString:GroceryDB"]);
             });
 
             // add identity context - for authentication
@@ -99,11 +99,11 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             // Use only when there is any db updates:-------------------------------------------------------
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            /*using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<StoreContext>();
                 context.Database.Migrate();
-            }
+            }*/
             //app.UseMiddleware<ExceptionMiddleware>(); // to format the error responses
 
             if (env.IsDevelopment())

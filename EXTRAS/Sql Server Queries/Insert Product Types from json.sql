@@ -1,4 +1,4 @@
-USE [EcomDB]
+USE [GroceryDB]
 GO
 
 /*  
@@ -11,7 +11,7 @@ copy path and paste it here
 
 Declare @JSON varchar(max)
 SELECT @JSON=BulkColumn
-FROM OPENROWSET (BULK 'F:\dotnet+angular\ecom\EXTRAS\SeedData\types.json', SINGLE_CLOB) import
+FROM OPENROWSET (BULK 'F:\CTS Final Project\Ecommerce-demo-dotnet-angular\EXTRAS\SeedData\ProductTypes.json', SINGLE_CLOB) import
 
 INSERT INTO [dbo].[ProductTypes]
 SELECT *

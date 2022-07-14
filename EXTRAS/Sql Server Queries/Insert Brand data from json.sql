@@ -1,4 +1,4 @@
-USE [EcomDB]
+USE [GroceryDB]
 GO
 
 /*  
@@ -13,7 +13,7 @@ Below code is to add json data from a fiel.json to sql server table
 
 Declare @JSON varchar(max)
 SELECT @JSON=BulkColumn
-FROM OPENROWSET (BULK 'F:\dotnet+angular\ecom\EXTRAS\SeedData\brands.json', SINGLE_CLOB) import
+FROM OPENROWSET (BULK 'F:\dotnet+angular\ecom\EXTRAS\SeedData\ProductBrands.json', SINGLE_CLOB) import
 
 INSERT INTO [dbo].[ProductBrands]
 SELECT *

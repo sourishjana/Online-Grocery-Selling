@@ -16,7 +16,18 @@
 
                 <h5 class="text-warning ml-3">Brands</h5>
                 <ul class="list-group mb-3">
-                    <li 
+                    <select class="custom-select mb-4"
+                    (change)="onBrandSelected($event.target.value)" >
+                        <option
+                        class="list-group-item" 
+                        *ngFor="let brand of brands"
+                        [class.active]="brand.id===this.shopParams.brandId"
+                        [value]="brand.id"
+                        >
+                        {{brand.name}}
+                        </option>
+                    </select>
+                    <!-- <li 
                         class="list-group-item" 
                         *ngFor="let brand of brands"
                         [class.active]="brand.id===this.shopParams.brandId"
@@ -24,11 +35,22 @@
                         (click)="onBrandSelected(brand.id)"
                     >
                         {{brand.name}}
-                    </li>
+                    </li> -->
                 </ul>
                 <h5 class="text-warning ml-3">Types</h5>
                 <ul class="list-group my-3">
-                    <li 
+                    <select class="custom-select mb-4"
+                    (change)="onTypeSelected($event.target.value)">
+                        <option
+                        class="list-group-item"  
+                        *ngFor="let type of types"
+                        [class.active]="type.id===this.shopParams.typeId"
+                        [value]="type.id"
+                        >
+                        {{type.name}}
+                        </option>
+                    </select>
+                    <!-- <li 
                         class="list-group-item"  
                         *ngFor="let type of types"
                         [class.active]="type.id===this.shopParams.typeId"
@@ -36,7 +58,7 @@
                         (click)="onTypeSelected(type.id)"
                     >
                         {{type.name}}
-                    </li>
+                    </li> -->
                 </ul>
             </ng-container>
         </section>

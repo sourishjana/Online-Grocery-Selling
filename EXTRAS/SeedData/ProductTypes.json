@@ -1,0 +1,82 @@
+[
+ {
+  "Id": 1,
+  "Name": "Rice"
+ },
+ {
+  "Id": 2,
+  "Name": "Flour"
+ },
+ {
+  "Id": 3,
+  "Name": "Sugar"
+ },
+ {
+  "Id": 4,
+  "Name": "Salt"
+ },
+ {
+  "Id": 5,
+  "Name": "Cooking Oil"
+ },
+ {
+  "Id": 6,
+  "Name": "Mustard"
+ },
+ {
+  "Id": 7,
+  "Name": "Daal"
+ },
+ {
+  "Id": 8,
+  "Name": "Bread"
+ },
+ {
+  "Id": 9,
+  "Name": "Honey"
+ },
+ {
+  "Id": 10,
+  "Name": "Jam"
+ },
+ {
+  "Id": 11,
+  "Name": "Butter"
+ },
+ {
+  "Id": 12,
+  "Name": "Cornflakes"
+ },
+ {
+  "Id": 13,
+  "Name": "Powdered Masala"
+ },
+ {
+  "Id": 14,
+  "Name": "Cookies"
+ },
+ {
+  "Id": 15,
+  "Name": "Chips"
+ },
+ {
+  "Id": 16,
+  "Name": "Frozen Snacks"
+ },
+ {
+  "Id": 17,
+  "Name": "Nuts"
+ },
+ {
+  "Id": 18,
+  "Name": "Oats"
+ },
+ {
+  "Id": 19,
+  "Name": "Sauce"
+ },
+ {
+  "Id": 20,
+  "Name": "Beans"
+ }
+]

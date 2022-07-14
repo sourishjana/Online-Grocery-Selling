@@ -5,7 +5,7 @@ import { PagingHeaderComponent } from './components/paging-header/paging-header.
 import { PagerComponent } from './components/pager/pager.component';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
-import { StepperComponent } from './components/stepper/stepper.component';
+//import { StepperComponent } from './components/stepper/stepper.component';
 //import { CarouselModule } from 'ngx-bootstrap/carousel'
 
 @NgModule({
@@ -14,7 +14,7 @@ import { StepperComponent } from './components/stepper/stepper.component';
     PagerComponent,
     OrderTotalsComponent,
     BasketSummaryComponent,
-    StepperComponent
+    //StepperComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +28,7 @@ import { StepperComponent } from './components/stepper/stepper.component';
     OrderTotalsComponent,
     BasketSummaryComponent,
     //CarouselModule
-    StepperComponent
+    //StepperComponent
   ]
 })
 export class SharedModule { }

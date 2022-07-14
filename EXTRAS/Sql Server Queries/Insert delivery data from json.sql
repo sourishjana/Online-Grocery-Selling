@@ -1,4 +1,4 @@
-USE [EcomDB]
+USE [GroceryDB]
 GO
 
 /*  

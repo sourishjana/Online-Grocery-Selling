@@ -1,0 +1,594 @@
+[
+ {
+  "Name": "Fortune Basmati Rice",
+  "Description": "The extra-long grain and Non-Sticky texture make this rice ideal for all types of Biryani. Pristine white grains.",
+  "Price": 300,
+  "PictureUrl": "images\/Products\/Rice\/Fortune Basmati Rice.jpg",
+  "ProductTypeId": 1,
+  "ProductBrandId": 1
+ },
+ {
+  "Name": "Dawat Brown Rice",
+  "Description": "Rich in fibre and also has delicious nutty flavour,processed with unique hydration enhancement technology which retains all the essential nutrients.",
+  "Price": 350,
+  "PictureUrl": "images\/Products\/Rice\/Dawat Brown Rice.jpg",
+  "ProductTypeId": 1,
+  "ProductBrandId": 2
+ },
+ {
+  "Name": "India Gate Classic Rice",
+  "Description": "India Gate classic is an exotic class of Basmati. It is pearl white grain, smooth, extra long and extra fine. It will be an important part of all quality rice recipes and on your platter to relish.",
+  "Price": 250,
+  "PictureUrl": "images\/Products\/Rice\/India Gate Classic Rice.jpg",
+  "ProductTypeId": 1,
+  "ProductBrandId": 3
+ },
+ {
+  "Name": "Charminar Brown Rice",
+  "Description": "Charminar Brown Rice is deliciously nutritious and flavorful. A dish of steamy and fluffy brown rice, with a delectably mild & nutty flavor. Made of whole grain.",
+  "Price": 400,
+  "PictureUrl": "images\/Products\/Rice\/Charminar Brown Rice.jpg",
+  "ProductTypeId": 1,
+  "ProductBrandId": 4
+ },
+ {
+  "Name": "Ashirvaad Atta",
+  "Description": "AASHIRVAAD Whole Wheat Atta is made from the grains which are heavy on the palm, golden amber in colour and hard in bite. Carefully grounded, it ensures that it contains 100% Sampoorna Atta.",
+  "Price": 180,
+  "PictureUrl": "images\/Products\/Flour\/Ashirvaad Atta.jpg",
+  "ProductTypeId": 2,
+  "ProductBrandId": 5
+ },
+ {
+  "Name": "Amul whole wheat atta",
+  "Description": "Amul Whole wheat Atta is made from whole wheat. The rotis made from this atta is high in fibre and nutrients, a good source of protein, vitamins and minerals.",
+  "Price": 220,
+  "PictureUrl": "images\/Products\/Flour\/Amul whole wheat atta.jpg",
+  "ProductTypeId": 2,
+  "ProductBrandId": 6
+ },
+ {
+  "Name": "Pillsbury chakki fresh atta",
+  "Description": "Pillsbury Chakki Fresh Atta is made of high - quality wheat, locally sourced from India's finest wheat fields and does not contain maida. ",
+  "Price": 200,
+  "PictureUrl": "images\/Products\/Flour\/Pillsbury chakki fresh atta.jpg",
+  "ProductTypeId": 2,
+  "ProductBrandId": 7
+ },
+ {
+  "Name": "Sugar lite",
+  "Description": "Sugarlite is a blend of sugar and 100% natural stevia which provides 100% sweetness of sugar, with 50% Less calories. Also it's an healthier alternative compared to normal sugar.",
+  "Price": 250,
+  "PictureUrl": "images\/Products\/Sugar\/Sugar lite.jpg",
+  "ProductTypeId": 3,
+  "ProductBrandId": 8
+ },
+ {
+  "Name": "Parry's white label sugar",
+  "Description": "Parrys White Label Sugar is one of the best refined sugar in a crystal cube shape, which is perfectly suitable for using in your eating stuffs.",
+  "Price": 300,
+  "PictureUrl": "images\/Products\/Sugar\/Parry's white level sugar.jpg",
+  "ProductTypeId": 3,
+  "ProductBrandId": 9
+ },
+ {
+  "Name": "Tata salt",
+  "Description": " Tata Salt assures purity and guarantees the right amount of iodine in the salt.It provides hygienic alternative and is untouched by hand.",
+  "Price": 25,
+  "PictureUrl": "images\/Products\/Salt\/Tata salt.jpg",
+  "ProductTypeId": 4,
+  "ProductBrandId": 10
+ },
+ {
+  "Name": "Ashirvaad salt",
+  "Description": "Aashirvaad Iodised Salt is made with the 4-step advantage process which ensures its good quality.It  has the right amount of iodine, which is vital for healthy physical growth and brain function.",
+  "Price": 30,
+  "PictureUrl": "images\/Products\/Salt\/Ashirvaad salt.jpg",
+  "ProductTypeId": 4,
+  "ProductBrandId": 11
+ },
+ {
+  "Name": "nourish black salt",
+  "Description": "Nourish Black Salt is made from volcanic rock salt that is enriched in Antioxidants and Minerals and gives you more health benefits.",
+  "Price": 20,
+  "PictureUrl": "images\/Products\/Salt\/nourish black salt.jpg",
+  "ProductTypeId": 4,
+  "ProductBrandId": 12
+ },
+ {
+  "Name": "Fortune Refined Sunflower Oil",
+  "Description": "Fortune Sunflower Oil is a light, healthy and nutritious cooking oil. Being rich in vitamins and fatty acids, it makes food easy to digest.",
+  "Price": 250,
+  "PictureUrl": "images\/Products\/Cooking Oil\/Fortune Refined Sunflower Oil.jpg",
+  "ProductTypeId": 5,
+  "ProductBrandId": 13
+ },
+ {
+  "Name": "saffola gold oil",
+  "Description": "This vegetable oil has a good balance of MUFA & PUFA with a specially designed anti-oxidant system that helps improve immunity and healthy cholesterol levels.",
+  "Price": 275,
+  "PictureUrl": "images\/Products\/Cooking Oil\/saffola gold oil.jpg",
+  "ProductTypeId": 5,
+  "ProductBrandId": 14
+ },
+ {
+  "Name": "Emami rice bran oil",
+  "Description": " It has a mild flavour and is neutral in taste. It is notable for its high smoke point, making it suitable for high-temperature cooking methods such as stir frying and deep frying.",
+  "Price": 350,
+  "PictureUrl": "images\/Products\/Cooking Oil\/Emami rice bran oil.jpg",
+  "ProductTypeId": 5,
+  "ProductBrandId": 15
+ },
+ {
+  "Name": "Sundrop Superlite Advanced Oil",
+  "Description": "Sundrop SuperLite is a 100% Refined Sunflower oil  enriched with Vitamins A, D. It is light and enriched with healthy nutrients.",
+  "Price": 320,
+  "PictureUrl": "images\/Products\/Cooking Oil\/Sundrop Superlite Advanced Oil.jpg",
+  "ProductTypeId": 5,
+  "ProductBrandId": 16
+ },
+ {
+  "Name": "Dr. Oetker Funfoods Traditional English Mustard",
+  "Description": "Oetker Traditional English Mustard gets its full-bodied zing from fresh mustard powder and delivers medium pungency and piquant taste. Enjoy it with dishess or as a marinade for several recipes.",
+  "Price": 420,
+  "PictureUrl": "images\/Products\/Mustard\/Dr. Oetker Funfoods Traditional English Mustard.jpg",
+  "ProductTypeId": 6,
+  "ProductBrandId": 17
+ },
+ {
+  "Name": "Tesco French Mustard",
+  "Description": "It is a French Mustard. Gentle Heat Prepared with a delicate blend of spices to add warmth to any dish",
+  "Price": 350,
+  "PictureUrl": "images\/Products\/Mustard\/Tesco French Mustard.jpg",
+  "ProductTypeId": 6,
+  "ProductBrandId": 18
+ },
+ {
+  "Name": "Fortune Arhar Dal",
+  "Description": "Fortune Unpolished Arhar Dal is untouched by hand and does not undergo any artificial polishing. This Nutria-lock process puts it on par with international quality standards.",
+  "Price": 270,
+  "PictureUrl": "images\/Products\/Dal\/Fortune Arhar Dal.jpg",
+  "ProductTypeId": 7,
+  "ProductBrandId": 19
+ },
+ {
+  "Name": "Kitchens Of India Yellow Dal Tadka",
+  "Description": "A gourmet ready-to-eat signature dish,Kitchens of India Yellow Dal Tadka has delicate and flavorful blend of spices, with no artificial preservatives, colors or flavors added.",
+  "Price": 270,
+  "PictureUrl": "images\/Products\/Dal\/Kitchens Of India Yellow Dal Tadka.jpg",
+  "ProductTypeId": 7,
+  "ProductBrandId": 20
+ },
+ {
+  "Name": "Pro Nature Organic Dal",
+  "Description": "Pro Nature Organic Tur Dal is sourced from certified organic farms, unpolished pulses that retain their goodness and natural taste. It is  a healthy and tasty meal for everyone.",
+  "Price": 300,
+  "PictureUrl": "images\/Products\/Dal\/Pro Nature Organic Dal.jpg",
+  "ProductTypeId": 7,
+  "ProductBrandId": 21
+ },
+ {
+  "Name": "Aashirvaad Organic Toor\/Arhar Dal Split",
+  "Description": "Our organic products have been expertly sourced and hygienically packed so that you get great taste and nutrition. At aashirvaad we take pride in ensuring our consumers get quality products",
+  "Price": 320,
+  "PictureUrl": "images\/Products\/Dal\/Aashirvaad Organic Toor\/Arhar Dal Split.jpg",
+  "ProductTypeId": 7,
+  "ProductBrandId": 22
+ },
+ {
+  "Name": "Whole Wheat Protein Bread",
+  "Description": "Made with whole wheat flour, this bread helps you with a perfect diet in the tastiest way possible with 150% more protein than the regular old breads.",
+  "Price": 50,
+  "PictureUrl": "images\/Products\/Bread\/Whole Wheat Protein Bread.jpg",
+  "ProductTypeId": 8,
+  "ProductBrandId": 23
+ },
+ {
+  "Name": "Britannia Milk Bread",
+  "Description": "The bread is improved with vitamins and prepared from the finest wheat flour, including carbohydrates and proteins , calcium and iron.",
+  "Price": 45,
+  "PictureUrl": "images\/Products\/Bread\/Britannia Milk Bread.jpg",
+  "ProductTypeId": 8,
+  "ProductBrandId": 24
+ },
+ {
+  "Name": "The Baker's Dozen Wholewheat Sandwich Loaf",
+  "Description": "The perfect daily bread, made with 100% whole wheat (atta) and no added maida. Without any added preservatives or chemicals.",
+  "Price": 30,
+  "PictureUrl": "images\/Products\/Bread\/The Baker's Dozen Wholewheat Sandwich Loaf.jpg",
+  "ProductTypeId": 8,
+  "ProductBrandId": 25
+ },
+ {
+  "Name": "English Oven Brown Bread",
+  "Description": "English Oven Brown Bread is a healthy and nutritious daily bread which is made with the richness of atta. It can be used to prepare sandwiches, toast, etc. ",
+  "Price": 55,
+  "PictureUrl": "images\/Products\/Bread\/English Oven Brown Bread.jpg",
+  "ProductTypeId": 8,
+  "ProductBrandId": 26
+ },
+ {
+  "Name": "Dabur Honey",
+  "Description": "Dabur Honey is entirely sourced from Indian beekeepers. In addition, Dabur Honey is also tested for zero presence of antibiotics, as further mandated by FSSAI.",
+  "Price": 155,
+  "PictureUrl": "images\/Products\/Honey\/Dabur Honey.jpg",
+  "ProductTypeId": 9,
+  "ProductBrandId": 27
+ },
+ {
+  "Name": "Zandu Pure Honey",
+  "Description": "Zandu Pure Honey is a unique blend of Sundarban Honey & Tulsi. We guarantee that every drop you taste is 100% pure because each batch of it is sent for sugar-addition test in labs to ensure purity.",
+  "Price": 178,
+  "PictureUrl": "images\/Products\/Honey\/Zandu Pure Honey.jpg",
+  "ProductTypeId": 9,
+  "ProductBrandId": 28
+ },
+ {
+  "Name": "Pure Raw Himalayan Wildflower Honey ",
+  "Description": "This honey is RAW - not heated, not pasteurised, not coloured and no chemicals added. It is as pure as nature meant it to be.",
+  "Price": 250,
+  "PictureUrl": "images\/Products\/Honey\/Pure Raw Himalayan Wildflower Honey .jpg",
+  "ProductTypeId": 9,
+  "ProductBrandId": 29
+ },
+ {
+  "Name": "Kissan Mixed Fruit Jam",
+  "Description": "Kissan Mixed Fruit Jam is a delicious blend of 8 different fruits Pineapple, Orange, Apple, Grape, Mango, Pear, Papaya, and Banana.Our Mixed Fruit Jam enables you to enjoy the taste of seasonal fruits throughout the year.",
+  "Price": 125,
+  "PictureUrl": "images\/Products\/Jam\/Kissan Mixed Fruit Jam.jpg",
+  "ProductTypeId": 10,
+  "ProductBrandId": 30
+ },
+ {
+  "Name": " Apis Fruit Blast Pineapple Jam",
+  "Description": " APIS brings to you the Pineapple Jam,tangy and sweet just as the real pineapples.  A long-lost golden treasure dug deep to your kid's tiffin box.",
+  "Price": 135,
+  "PictureUrl": "images\/Products\/Jam\/ Apis Fruit Blast Pineapple Jam.jpg",
+  "ProductTypeId": 10,
+  "ProductBrandId": 31
+ },
+ {
+  "Name": "Frapito Squeezee Mixed Fruit Jam",
+  "Description": "Frapito Jams, a delicious blend of taste and nutrient content. Mix of delightful Strawberries, Red Currants, and Cherries make this most suitable with infinite home dishes.",
+  "Price": 142,
+  "PictureUrl": "images\/Products\/Jam\/Frapito Squeezee Mixed Fruit Jam.jpg",
+  "ProductTypeId": 10,
+  "ProductBrandId": 32
+ },
+ {
+  "Name": "Tesco Blackcurrant Jam",
+  "Description": "Blackcurrant extra jam. Rich and vibrant, full of juicy blackcurrant pieces.",
+  "Price": 110,
+  "PictureUrl": "images\/Products\/Jam\/Tesco Blackcurrant Jam.jpg",
+  "ProductTypeId": 10,
+  "ProductBrandId": 33
+ },
+ {
+  "Name": "Nutralite Butter",
+  "Description": "Start your breakfast the healthy way with Nutralite Table Spread.It has naturally 0% cholesterol and is powered with Omega 3.",
+  "Price": 95,
+  "PictureUrl": "images\/Products\/Butter\/Nutralite Butter.jpg",
+  "ProductTypeId": 11,
+  "ProductBrandId": 34
+ },
+ {
+  "Name": "Amul Butter",
+  "Description": "Unsalted Butter is made from fresh cream and nothing else. It is Amul Butter in its purest form, and doesn't contain any salt at all. 100% Natural !",
+  "Price": 85,
+  "PictureUrl": "images\/Products\/Butter\/Amul Butter.jpg",
+  "ProductTypeId": 11,
+  "ProductBrandId": 35
+ },
+ {
+  "Name": "DAIRY CRAFT UNSALTED BUTTER",
+  "Description": "A richer and creamy butter,  crafted by Dairy Craft, using the art of slow churning. It has a distinctive flavour and a pleasant aroma, making it an essential ingredient for baking.",
+  "Price": 109,
+  "PictureUrl": "images\/Products\/Butter\/DAIRY CRAFT UNSALTED BUTTER.jpg",
+  "ProductTypeId": 11,
+  "ProductBrandId": 36
+ },
+ {
+  "Name": "Murginns Unsalted White Butter",
+  "Description": "Pure and best quality milk and it can be used as a spread, tastes best on toasts and wraps. Suitable for vegetarians.",
+  "Price": 125,
+  "PictureUrl": "images\/Products\/Butter\/Murginns Unsalted White Butter.jpg",
+  "ProductTypeId": 11,
+  "ProductBrandId": 37
+ },
+ {
+  "Name": "Kellogg'S Corn Flakes Original",
+  "Description": "Kellogg's Corn Flakes is a nourishing and tasty ready-to-eat breakfast cereal which is High in Iron, Vitamin C and key essential B group Vitamins.",
+  "Price": 220,
+  "PictureUrl": "images\/Products\/Cornflakes\/Kellogg'S Corn Flakes Original.jpg",
+  "ProductTypeId": 12,
+  "ProductBrandId": 38
+ },
+ {
+  "Name": "Nestle NesPlus Crunchy Flakes",
+  "Description": "Nesplus Crunchy Flakes are made with corn and oats.It ensures you and your family get all the whole grain goodness. Combination of corn and oats, makes NesPlus Crunchy Flakes nutritious and declicious.",
+  "Price": 180,
+  "PictureUrl": "images\/Products\/Cornflakes\/Nestle NesPlus Crunchy Flakes.jpg",
+  "ProductTypeId": 12,
+  "ProductBrandId": 39
+ },
+ {
+  "Name": "Kellogg'S Muesli ",
+  "Description": "New Kellogg's Muesli with 21% Fruit, Nut & Seeds', with the goodness of five baked grains  and an abundance of dried fruits, nuts & seeds is carefully crafted for flavor and texture.",
+  "Price": 200,
+  "PictureUrl": "images\/Products\/Cornflakes\/Kellogg'S Muesli .jpg",
+  "ProductTypeId": 12,
+  "ProductBrandId": 40
+ },
+ {
+  "Name": "Kellogg's Strawberry Corn Flakes",
+  "Description": "The goodness of Strawberry cornflakes can be tasted in every bite and  is prepared from actual natural corn, with iron and 8 essential Vitamins.",
+  "Price": 235,
+  "PictureUrl": "images\/Products\/Cornflakes\/Kellogg's Strawberry Corn Flakes.jpg",
+  "ProductTypeId": 12,
+  "ProductBrandId": 41
+ },
+ {
+  "Name": "Everest Super Garam Masala",
+  "Description": "This Masala Mix contains pure, farm-fresh spices, blended in just the right proportions to enliven an array of starters, snacks and gourmet dishes. ",
+  "Price": 85,
+  "PictureUrl": "images\/Products\/Powdered Masala\/Everest Super Garam Masala.jpg",
+  "ProductTypeId": 13,
+  "ProductBrandId": 42
+ },
+ {
+  "Name": " Sunrise Pure Shukto Masala",
+  "Description": "Served as an appetizer, Sukto is a delightful Bengali vegetable curry that offers a tint of sweetness with a core taste of pleasant bitterness. Make it at home with Sunrise Sukto Masala for that authentic Bengali taste!",
+  "Price": 90,
+  "PictureUrl": "images\/Products\/Powdered Masala\/ Sunrise Pure Shukto Masala.jpg",
+  "ProductTypeId": 13,
+  "ProductBrandId": 43
+ },
+ {
+  "Name": "Sunrise Pure Sabji Masala Powder",
+  "Description": "Sunrise Pure Sabji Masala Powder is a unique blend of spices  with high quality ingredients  Sunrise Sabji Masala Powder is a game-changer when it comes to making any kind of Sabji.",
+  "Price": 75,
+  "PictureUrl": "images\/Products\/Powdered Masala\/Sunrise Pure Sabji Masala Powder.jpg",
+  "ProductTypeId": 13,
+  "ProductBrandId": 44
+ },
+ {
+  "Name": "catch dal makhani masala",
+  "Description": "Catch Dal Makhani Masala gives a classic North-Indian twist to your regular preparation of black dal.The perfect combination of authentic Indian spices in a perfect blend to give you lip-smacking taste.",
+  "Price": 60,
+  "PictureUrl": "images\/Products\/Powdered Masala\/catch dal makhani masala.jpg",
+  "ProductTypeId": 13,
+  "ProductBrandId": 45
+ },
+ {
+  "Name": "Noori Chaat Masala",
+  "Description": "Chaat Masala is a tangy powder that can spruce up any dish with a pinch. It is a popular spice mix used in a host of recipes from Tikki, bhelpuri to fruits and curries.",
+  "Price": 45,
+  "PictureUrl": "images\/Products\/Powdered Masala\/Noori Chaat Masala.jpg",
+  "ProductTypeId": 13,
+  "ProductBrandId": 46
+ },
+ {
+  "Name": "Parle Black Bourbon Vanilla Biscuits",
+  "Description": "This Vanilla Flavour Pack Is Filled With The Richness Of Cocoa. Fit for a snack at home and fit for a tea party too thats how we would recommend the use of this product!",
+  "Price": 60,
+  "PictureUrl": "images\/Products\/Cookies\/Parle Black Bourbon Vanilla Biscuits.jpg",
+  "ProductTypeId": 14,
+  "ProductBrandId": 47
+ },
+ {
+  "Name": "Quillsage Oats & Raisin Cookies Cookies",
+  "Description": "Oats & Raisins cookies give you the goodness of oats and raisins in biscuits. Filled with fiber and antioxidants, It's Perfect for any time munching.",
+  "Price": 50,
+  "PictureUrl": "images\/Products\/Cookies\/Quillsage Oats & Raisin Cookies Cookies.jpg",
+  "ProductTypeId": 14,
+  "ProductBrandId": 48
+ },
+ {
+  "Name": "Quillsage Cashew Cookies",
+  "Description": "These Cashew Cookies delightfully rich and tasty, a nutritious treat that will make a great snack time.",
+  "Price": 75,
+  "PictureUrl": "images\/Products\/Cookies\/Quillsage Cashew Cookies.jpg",
+  "ProductTypeId": 14,
+  "ProductBrandId": 49
+ },
+ {
+  "Name": "Pringles Potato Chips",
+  "Description": "Pringles Original Potato Crisps are with a fun shape, tantalizing potato taste and perfect crunch from edge to edge. Pringles potato crisps are salty snacks that are always tasty, never greasy.",
+  "Price": 25,
+  "PictureUrl": "images\/Products\/Chips\/Pringles Potato Chips.jpg",
+  "ProductTypeId": 15,
+  "ProductBrandId": 50
+ },
+ {
+  "Name": " Lay's India Magic Masala Potato Chips",
+  "Description": "Taste the unbeatable blend of delectable Indian spices with best quality potatoes.100% vegetarian, best quality potatoes, finest quality of spices and edible vegetable oils. Trans-fat free.",
+  "Price": 10,
+  "PictureUrl": "images\/Products\/Chips\/ Lay's India Magic Masala Potato Chips.jpg",
+  "ProductTypeId": 15,
+  "ProductBrandId": 51
+ },
+ {
+  "Name": "Uncle chips",
+  "Description": "Uncle Chipps is the pioneer of branded nitrogen-foil packed potato chips in India. ",
+  "Price": 10,
+  "PictureUrl": "images\/Products\/Chips\/Uncle chips.jpg",
+  "ProductTypeId": 15,
+  "ProductBrandId": 52
+ },
+ {
+  "Name": "Bingo Potato Chips",
+  "Description": "Bingo Potato Chips are made from handpicked golden quality potatoes. These crispy potato chips are enveloped with a rich layer of sour cream, seasoned with freshly diced and pickled spring onions.",
+  "Price": 10,
+  "PictureUrl": "images\/Products\/Chips\/Bingo Potato Chips.jpg",
+  "ProductTypeId": 15,
+  "ProductBrandId": 53
+ },
+ {
+  "Name": "ITC Crispy Chicken Fries",
+  "Description": "ITC Master Chef Crispy Chicken Fries are an interesting take on the classic French Fries. With the goodness of juicy chicken , these fries are a delicious treat.",
+  "Price": 340,
+  "PictureUrl": "images\/Products\/Frozen Snacks\/ITC Crispy Chicken Fries.jpg",
+  "ProductTypeId": 16,
+  "ProductBrandId": 54
+ },
+ {
+  "Name": "McCain Veggie Fingers",
+  "Description": "McCain Veggie Finger is an amazing combination of potatoes, vegetables and a bold tandoori seasoning.Our Veggie Nuggets will make sure that you enjoy every bite thoroughly!",
+  "Price": 280,
+  "PictureUrl": "images\/Products\/Frozen Snacks\/McCain Veggie Fingers.jpg",
+  "ProductTypeId": 16,
+  "ProductBrandId": 55
+ },
+ {
+  "Name": "Amul Happy Treats French Fries",
+  "Description": "Amul Happy Treats French Fries are best served hot & crispy with Ketchup and can be eaten as part of lunch or dinner or by themselves as a snack. ",
+  "Price": 130,
+  "PictureUrl": "images\/Products\/Frozen Snacks\/Amul Happy Treats French Fries.jpg",
+  "ProductTypeId": 16,
+  "ProductBrandId": 56
+ },
+ {
+  "Name": "Keventer Ready to Cook Cheese Chilli Patty",
+  "Description": "The Keventer Cheese and Jalapeno Bites serve a deliciously dippable story . A delicate mix of ingredients , you can treat your guests to an extra crispy, extra cheesy and extra tasty experience.",
+  "Price": 180,
+  "PictureUrl": "images\/Products\/Frozen Snacks\/Keventer Readt to Cook Cheese Chilli Patty.jpg",
+  "ProductTypeId": 16,
+  "ProductBrandId": 57
+ },
+ {
+  "Name": "Ministry Of Nuts  Premium Dry Fruitsalmonds",
+  "Description": "Perfect gift for your friends & family, colleagues & clients or for your loved ones.Gift box contains california almonds , california pistachios,whole cashew nuts, seedless raisins & omani dates.",
+  "Price": 220,
+  "PictureUrl": "images\/Products\/Nuts\/Ministry Of Nuts  Premium Dry Fruitsalmonds.jpg",
+  "ProductTypeId": 17,
+  "ProductBrandId": 58
+ },
+ {
+  "Name": "Zucchero Roasted Premium Mixed Nuts",
+  "Description": "Buy best Roasted Premium Mixed Nuts from Zucchero at the lowest price. Your Roasted Premium Mixed Nuts will be shipped fresh to your doorstep directly from the place of origin.",
+  "Price": 145,
+  "PictureUrl": "images\/Products\/Nuts\/Zucchero Roasted Premium Mixed Nuts.jpg",
+  "ProductTypeId": 17,
+  "ProductBrandId": 59
+ },
+ {
+  "Name": "Haldirams Classic Roasted Crushed Peanuts",
+  "Description": "Haldiram's Crushed  Peanuts, a classic combination of roasted peanuts with the right amount of salt. A perfect crunchy snack to binge on any time of the day.",
+  "Price": 320,
+  "PictureUrl": "images\/Products\/Nuts\/Haldirams Classic Roasted Crushed Peanuts.jpg",
+  "ProductTypeId": 17,
+  "ProductBrandId": 60
+ },
+ {
+  "Name": "Assorted Nuts by Thottam Farm Fresh",
+  "Description": "Our assorted nuts contain almonds, cashews, and pistachio.The combination is pure heaven!",
+  "Price": 241,
+  "PictureUrl": "images\/Products\/Nuts\/Assorted Nuts by Thottam Farm Fresh.jpg",
+  "ProductTypeId": 17,
+  "ProductBrandId": 61
+ },
+ {
+  "Name": "Quaker Oats",
+  "Description": "Quaker Oats is 100% whole grains for lasting energy and daily in a diet low in saturated fat and cholesterol may reduce this risk of heart disease.",
+  "Price": 80,
+  "PictureUrl": "images\/Products\/Oats\/Quaker Oats.jpg",
+  "ProductTypeId": 18,
+  "ProductBrandId": 62
+ },
+ {
+  "Name": "Healthy Life Oats ",
+  "Description": "Healthy Life Oats are made from 100% natural Australian Grains, which give you fantastic health benefits. Consuming it as a part of your daily routine is both delicious and requires minimal effort.",
+  "Price": 90,
+  "PictureUrl": "images\/Products\/Oats\/Healthy Life Oats .jpg",
+  "ProductTypeId": 18,
+  "ProductBrandId": 63
+ },
+ {
+  "Name": "Kelloggs Oats",
+  "Description": "Kellogg's Oats is a wonder grain that has  soluble fibre. It can be cooked with milk or water and enjoyed hot in a recipe of your choice.",
+  "Price": 100,
+  "PictureUrl": "images\/Products\/Oats\/Kelloggs Oats.jpg",
+  "ProductTypeId": 18,
+  "ProductBrandId": 64
+ },
+ {
+  "Name": "Suffola Oats",
+  "Description": "Saffola Oats are made with 100% natural wholegrain rolled oats. Its grains are so soft that it provides a super creamy texture to your breakfast.",
+  "Price": 99,
+  "PictureUrl": "images\/Products\/Oats\/Suffola Oats.jpg",
+  "ProductTypeId": 18,
+  "ProductBrandId": 65
+ },
+ {
+  "Name": "True Elements Steel Cut Oats Gluten Free",
+  "Description": "Elements Steel Cut Oats are naturally gluten-free and 100% wholegrain superfood which you can enjoy anytime. It is made with no added preservatives or chemicals.",
+  "Price": 155,
+  "PictureUrl": "images\/Products\/Oats\/True Elements Steel Cut Oats Gluten Free.jpg",
+  "ProductTypeId": 18,
+  "ProductBrandId": 66
+ },
+ {
+  "Name": "Heinz Tomato Ketchup",
+  "Description": "Our classic ketchup is made only from sweet, juicy, red ripe tomatoes for the signature thick and rich taste of America's Favorite Ketchup",
+  "Price": 120,
+  "PictureUrl": "images\/Products\/Sauce\/Heinz Tomato Ketchup.jpg",
+  "ProductTypeId": 19,
+  "ProductBrandId": 67
+ },
+ {
+  "Name": "Chings Red Chilli Sauce",
+  "Description": "Ching's Red Chilli Sauce is the Desi Chinese way to add some sweet heat to your favourite snack, A fiery blend of red chillies, vinegar and spices, it can make any snack spicily mouth-watering.",
+  "Price": 85,
+  "PictureUrl": "images\/Products\/Sauce\/Chings Red Chilli Sauce.jpg",
+  "ProductTypeId": 19,
+  "ProductBrandId": 68
+ },
+ {
+  "Name": "Hellmann's Garlic Chilli Sauce",
+  "Description": "A creamy style garlic sauce with the added kick of chilli! great for spicing up your barbecued chicken, drizzled over a salad or even for dipping your chips into!",
+  "Price": 60,
+  "PictureUrl": "images\/Products\/Sauce\/Hellmann's Garlic Chilli Sauce.jpg",
+  "ProductTypeId": 19,
+  "ProductBrandId": 69
+ },
+ {
+  "Name": "Ching'S Green Chilli Sauces",
+  "Description": "Ching's Secret Green Chilli Sauce  is made from Jwala green chillies, tangy vinegar and spices. It can impart a delicious buzz to your favourite snack and can be used as a flavour enhancer too.",
+  "Price": 75,
+  "PictureUrl": "images\/Products\/Sauce\/Ching'S Green Chilli Sauces.jpg",
+  "ProductTypeId": 19,
+  "ProductBrandId": 70
+ },
+ {
+  "Name": "Heinz Beanz Baked Beans",
+  "Description": "Heinz baked beans don't just taste great, but are nutritious too; high in fibre, high in protein and low in fat, as well as contributing to 1 of your 5 a day.",
+  "Price": 56,
+  "PictureUrl": "images\/Products\/Beans\/Heinz Beanz Baked Beans.jpg",
+  "ProductTypeId": 20,
+  "ProductBrandId": 71
+ },
+ {
+  "Name": "American Garden Foul Medammas Grade A Beans",
+  "Description": "Transform your boring daily meals into something more savoury with American Garden's Foul Medammas. It is loaded with tons of fibre and rich proteins.",
+  "Price": 62,
+  "PictureUrl": "images\/Products\/Beans\/American Garden Foul Medammas Grade A Beans.jpg",
+  "ProductTypeId": 20,
+  "ProductBrandId": 72
+ },
+ {
+  "Name": "American Garden Kidney Beans",
+  "Description": "American Garden Red Kidney Beans are Pre-cooked, they will save you some precious time in the kitchen. No matter how you’re planning to use them, they will surely please everyone.",
+  "Price": 120,
+  "PictureUrl": "images\/Products\/Beans\/American Garden Kidney Beans.jpg",
+  "ProductTypeId": 20,
+  "ProductBrandId": 73
+ },
+ {
+  "Name": "La Costena Whole Black Beans",
+  "Description": " Whole black beans are slow cooked with onion, tomato paste, garlic, jalapeño peppers, and just the right amount of salt, so all you have to do is heat and serve.",
+  "Price": 310,
+  "PictureUrl": "images\/Products\/Beans\/La Costena Whole Black Beans.jpg",
+  "ProductTypeId": 20,
+  "ProductBrandId": 74
+ }
+]
