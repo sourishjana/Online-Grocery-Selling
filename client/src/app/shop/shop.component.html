@@ -8,7 +8,8 @@
                     <option 
                         *ngFor="let option of sortOptions"
                         [value]="option.value"
-                        [class.active]="sortSelected===option.value"
+                        [selected]="this.shopParams.sort===option.value"
+                        [class.active]="this.shopParams.sort===option.value"
                     >
                         {{option.name}}
                     </option>
