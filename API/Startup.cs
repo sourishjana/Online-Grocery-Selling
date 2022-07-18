@@ -1,5 +1,4 @@
 using API.Helpers;
-using API.Middleware;
 using Core.Entities.Identity;
 using Core.Interfaces;
 using Infrastructure.Data;
